@@ -4,6 +4,9 @@
   "description": "A simple weather app made for a final project of the React JS Fundamentals in reactjsprogram.com",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
+    "production": "webpack -p",
+    "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
