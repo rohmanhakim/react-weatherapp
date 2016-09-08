@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "4.3.0"
+script:
+  # run build script specified in package.json
+  - npm run build
+  - npm start
