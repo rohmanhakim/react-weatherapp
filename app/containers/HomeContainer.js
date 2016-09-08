@@ -8,12 +8,12 @@ var HomeContainer = React.createClass({
   },
   getInitialState: function() {
     return {
-      location: ""
+      place: ""
     };
   },
-  onLocationChange: function(e) {
+  onPlaceChange: function(e) {
     this.setState({
-      location: e.target.value
+      place: e.target.value
     });
   },
   onSubmitPlace: function(e) {
@@ -21,15 +21,15 @@ var HomeContainer = React.createClass({
     this.context.router.push({
       pathname: "/forecast",
       state: {
-        location: this.state.location
+        place: this.state.place
       }
     });
   },
   render: function() {
     return (
       <Home onSubmitPlace={this.onSubmitPlace}
-        onLocationChange={this.onLocationChange}
-        location={this.state.location}/>
+        onPlaceChange={this.onPlaceChange}
+        place={this.state.place}/>
     );
   }
 
