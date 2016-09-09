@@ -15,7 +15,7 @@ function Home (props) {
           <div className="col-sm-4"></div>
           <div className="form-group col-sm-4 text-center">
             <form onSubmit={props.onSubmitPlace}>
-              <input type="text" className="form-control" onChange={props.onLocationChange} placeholder="Eg. Salt Lake City, Utah"/>
+              <input type="text" className="form-control" onChange={props.onPlaceChange} placeholder="Eg. Salt Lake City, Utah"/>
               <br/>
               <button type="submit" className="btn btn-lg btn-success">Get Weather</button>
             </form>
@@ -29,7 +29,7 @@ function Home (props) {
 
 Home.propTypes = {
   onSubmitPlace: PropTypes.func.isRequired,
-  onLocationChange: PropTypes.func.isRequired
+  onPlaceChange: PropTypes.func.isRequired
 }
 
 module.exports = Home;
