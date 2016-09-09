@@ -14,15 +14,22 @@ function Home (props) {
           <br/>
           <div className="col-sm-4"></div>
           <div className="form-group col-sm-4 text-center">
-            <input type="text" className="form-control" placeholder="Eg. Salt Lake City, Utah"/>
-            <br/>
-            <button className="btn btn-lg btn-success">Get Weather</button>
+            <form onSubmit={props.onSubmitPlace}>
+              <input type="text" className="form-control" onChange={props.onPlaceChange} placeholder="Eg. Salt Lake City, Utah"/>
+              <br/>
+              <button type="submit" className="btn btn-lg btn-success">Get Weather</button>
+            </form>
           </div>
           <div className="col-sm-4"></div>
         </div>
       </div>
     </div>
   );
+}
+
+Home.propTypes = {
+  onSubmitPlace: PropTypes.func.isRequired,
+  onPlaceChange: PropTypes.func.isRequired
 }
 
 module.exports = Home;
