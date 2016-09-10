@@ -2,6 +2,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 const Forecast = require('../components/Forecast');
 const injectStyle = require('../helper/injectStyle');
+const openWeatherMap = require('../helper/openWeatherMapAPIHelper');
 
 var ForecastContainer = React.createClass({
   contextTypes: {
@@ -9,7 +10,8 @@ var ForecastContainer = React.createClass({
   },
   getInitialState: function() {
     return {
-      isLoading: true
+      isLoading: true,
+      place: this.props.location.state.place
     };
   },
   componentDidMount: function() {
@@ -25,6 +27,10 @@ var ForecastContainer = React.createClass({
       }
     `;
     injectStyle(keyframesStyle);
+    openWeatherMap.getFiveDaysForecast(this.state.place)
+      .then(function (response) {
+        console.log(response);
+      });
   },
   render: function() {
     return (
