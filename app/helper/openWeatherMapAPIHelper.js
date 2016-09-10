@@ -6,10 +6,11 @@ const BASEURL = "http://api.openweathermap.org/data/2.5";
 const URI_FORECAST = "/forecast?";
 const PARAM_QUERY = "q=";
 const PARAM_MODE = "mode=";
-const PARAM_APPID = "APPID="
+const PARAM_APPID = "APPID=";
+const PARAM_UNITS = "units="
 
 function getFiveDaysForecastRequest(place) {
-  return axios.get(BASEURL + URI_FORECAST + PARAM_QUERY + place + "&" + PARAM_MODE + "&" + PARAM_APPID + APPID)
+  return axios.get(BASEURL + URI_FORECAST + PARAM_QUERY + place + "&" + PARAM_MODE + "&" + PARAM_UNITS + "metric" + "&" + PARAM_APPID + APPID)
     .then(function (response) {
       return response;
     })
