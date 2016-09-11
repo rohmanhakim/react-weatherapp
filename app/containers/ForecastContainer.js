@@ -11,7 +11,8 @@ var ForecastContainer = React.createClass({
   getInitialState: function() {
     return {
       isLoading: true,
-      place: this.props.location.state.place
+      place: this.props.location.state.place,
+      forecastData: {}
     };
   },
   componentDidMount: function() {
@@ -29,14 +30,20 @@ var ForecastContainer = React.createClass({
     injectStyle(keyframesStyle);
     openWeatherMap.getFiveDaysForecast(this.state.place)
       .then(function (response) {
+        this.setState({
+          isLoading: false,
+          place: response.city,
+          forecastData: response
+        });
         console.log(response);
-      });
+      }.bind(this));
   },
   render: function() {
     return (
       <Forecast
         isLoading={this.state.isLoading}
-        place={this.props.location.state.place} />
+        place={this.state.place}
+        forecastData={this.state.forecastData}/>
     );
   }
 
