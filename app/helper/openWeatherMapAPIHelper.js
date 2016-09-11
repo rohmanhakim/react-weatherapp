@@ -1,4 +1,5 @@
 const axios = require('axios');
+const countryCodeHelper = require('./countryCodeHelper');
 
 //api.openweathermap.org/data/2.5/forecast?q=las vegas,nevada&mode=json&APPID=7f264597e2aac98a65137abcdee73a3f
 const APPID = "7f264597e2aac98a65137abcdee73a3f";
@@ -47,10 +48,6 @@ function dayOfWeek(dttxt){
   var w = (d + (13 * (m + 1) / 5) + y + (y/4) + (c/4) - (2 * c)) % 7;
   return weekTable[w];
 }
-
-// function getTodayDate(){
-//   return new Date().getDate();
-// }
 
 function extractDate(dttxt){
   return dttxt.split(" ")[0];
@@ -111,13 +108,21 @@ function constructForecastResponse(response){
   return {
     city: response.city.name,
     countryCode: response.city.country,
+    countryName: "",
     forecasts: filterForecast(response.list)
   }
 }
 
 var openWeatherMapAPIHelper = {
   getFiveDaysForecast: function (place) {
-    return getFiveDaysForecastRequest(place);
+    return getFiveDaysForecastRequest(place)
+    .then(function (response){
+      return countryCodeHelper.getNameOfCountry(response.countryCode)
+        .then(function (countryNameResponse){
+          response.countryName = countryNameResponse;
+          return response;
+        });
+    });
   }
 }
 
