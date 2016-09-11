@@ -4,9 +4,13 @@ const styles = require('../styles/styles');
 function Place (props) {
   return (
     <div className="row" style={styles.placeContainer}>
-      Tokyo, Japan
+      {props.place}
     </div>
   );
+}
+
+Place.propTypes = {
+  place: PropTypes.string.isRequired
 }
 
 module.exports = Place;

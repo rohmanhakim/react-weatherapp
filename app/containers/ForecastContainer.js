@@ -32,7 +32,7 @@ var ForecastContainer = React.createClass({
       .then(function (response) {
         this.setState({
           isLoading: false,
-          place: response.city,
+          place: response.city + ", " + response.countryName,
           forecastData: response
         });
         console.log(response);

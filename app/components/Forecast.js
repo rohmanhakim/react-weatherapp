@@ -25,7 +25,7 @@ function Forecast (props) {
       <div className="row">
         <div className="col-sm-6">
           <Date />
-          <Place />
+          <Place place={props.place}/>
           <TodayWeather />
         </div>
         <TodayWeatherIcon />
